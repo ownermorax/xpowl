@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="xpowl",
-    version="1.0.0",
+    version="1.0.1",
     author="Morax",
     author_email="bloodlustedx@gmail.com",
-    description="https://xpowl.ru",
+    description="https://github.com/ownermorax/xpowl",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ownermorax/xpowl",
+    url="https://xpowl.ru",
     packages=["xpowl"],
     classifiers=[
         "Programming Language :: Python :: 3",
