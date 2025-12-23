@@ -151,6 +151,10 @@ def sha256_bytes(data):
          >>> len(sha256_bytes("test"))
          32
      """
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    elif not isinstance(data, bytes):
+        raise TypeError(f"Ожидается str или bytes, получен {type(data).__name__}")
     hasher = SHA256()
     hasher.update(data)
     return hasher.finalize()
@@ -184,6 +188,10 @@ def sha256(data):
           Для получения байтового представления используйте функцию sha256_bytes().
           Обе функции возвращают один и тот же хэш, но в разных форматах.
       """
+    if isinstance(data, str):
+        data = data.encode('utf-8')
+    elif not isinstance(data, bytes):
+        raise TypeError(f"Ожидается str или bytes, получен {type(data).__name__}")
     hasher = SHA256()
     hasher.update(data)
     return hasher.hexdigest()
@@ -228,7 +236,7 @@ def abs(x):
     Возвращает абсолютное значение числа.
 
     Параметры:
-        x: число (int, float) или объект, поддерживающий операцию >= и унарный минус
+        x: число (int, float, complex) или объект, поддерживающий операцию >= и унарный минус
 
     Возвращает:
         Абсолютное значение числа |x|
@@ -244,10 +252,16 @@ def abs(x):
         >>> abs(0)
         0
     """
+    if isinstance(x, complex):
+        return (x.real ** 2 + x.imag ** 2) ** 0.5
+
     try:
         return x if x >= 0 else (-x)
     except Exception as e:
-        raise TypeError(f"Ошибка вычисления модуля: {str(e)}")
+        raise TypeError(
+            f"Неподдерживаемый тип для abs(): {type(x).__name__}. "
+            f"Ожидается int, float или complex."
+        )
 
 
 def is_prime(n):
@@ -271,7 +285,9 @@ def is_prime(n):
     if not isinstance(n, int):
         raise TypeError(f"Ожидается целое число, получен {type(n).__name__}")
     n = abs(n)
-    if n <= 2:
+    if n < 2:
+        return False
+    if n == 2:
         return True
     for x in range(2, int(n**0.5)+1):
         if n%x == 0:
@@ -296,6 +312,10 @@ def divisors(n):
     if not isinstance(n, int):
         raise TypeError(f"Ожидается целое число, получен {type(n).__name__}")
     n = abs(n)
+    if n == 0:
+        return []
+    if n == 1:
+        return  [1]
     if is_prime(n):
         return [1, n]
     s = []

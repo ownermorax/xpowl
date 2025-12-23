@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="xpowl",
-    version="1.0.4",
+    version="1.1.0",
     author="Morax",
     author_email="bloodlustedx@gmail.com",
     description="https://github.com/ownermorax/xpowl",
