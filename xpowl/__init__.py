@@ -1,9 +1,9 @@
 """
-Версия 1.0.2
+Версия 1.0.3
 """
 
-from .core import febub, ewrip, abs, is_prime, divisors
+from .core import febub, ewrip, abs, is_prime, divisors, help
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 __author__ = "Morax"
-__all__ = ['abs', 'is_prime', 'divisors', 'febub', 'ewrip']
+__all__ = ['help', 'abs', 'is_prime', 'divisors', 'febub', 'ewrip']
