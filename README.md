@@ -1,9 +1,9 @@
 # xpowl
 
-Библиотека Python с функциями `abs, is_prime, divisors` и тд. Используйте `help()`, чтобы увидеть все функции.
+Python library with functions such as `abs`, `is_prime`, `divisors`, and more. Use `help()` to see all available functions.
 
-## Установка
+## Installation
 
 ```bash
 pip install xpowl
-
+```
